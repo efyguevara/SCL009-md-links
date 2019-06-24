@@ -1,8 +1,10 @@
+#!/usr/bin / env node
+
 module.exports = () => {
 
 };
 
-#!/usr/bin / env node
+
 const process = require('process');
 const marked = require("marked");
 const FileHound = require('filehound');

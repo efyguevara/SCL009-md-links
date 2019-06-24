@@ -7,5 +7,29 @@
     "marked": "^0.6.2",
     "node.fetch": "^1.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "description": "## Preámbulo",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/efyguevara/SCL009-md-links.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Stefany Guevara",
+  "license": "ISC",
+  "bin": {
+    "md-links": "index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/efyguevara/SCL009-md-links/issues"
+  },
+  "homepage": "https://github.com/efyguevara/SCL009-md-links#readme"
 }
