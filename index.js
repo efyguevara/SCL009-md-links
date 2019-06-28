@@ -11,7 +11,7 @@ const FileHound = require('filehound');
 const path = require('path');
 const fetch = require('node-fetch');
 
-let links = [];
+
 
 process.argv.forEach((val, index) => {
   arrFiles.push(process.argv[index]);
@@ -26,7 +26,13 @@ fs.stat(arrFiles[2], (error, stats) => {
   }
   if (stats.isFile()) {
     console.log("ES UN FILE");
-    readLinks(arrFiles[2]);
+    readLinks(arrFiles[2])
+      .then(res => {
+        console.log("Probando readLinks", res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
   if (stats.isDirectory()) {
     console.log("ES UN DIRECTORIO");
@@ -36,12 +42,11 @@ fs.stat(arrFiles[2], (error, stats) => {
 
 const readLinks = (path) => {
   return new Promise((resolve, reject) => {
+    let links = [];
     fs.readFile(path, "utf8", (err, data) => {
       if (err) {
         reject(err);
       } else {
-        resolve(data)
-
         const renderer = new marked.Renderer();
         renderer.link = (href, title, text) => {
           links.push({
@@ -54,34 +59,37 @@ const readLinks = (path) => {
 
         fetchLink(links);
       }
+      resolve(links);
     })
   })
 }
 
-readLinks(arrFiles[2])
+const fetchLink = (readLinks) => {
+  return new Promise((resolve, reject) => {
+    let objectLink = [];
+    
+      readLinks.forEach(element => {
+        fetch(element.href)
+        objectLink.push({
+          Url: res.url,
+          TrueOrFalse: res.ok,
+          Cod: res.status,
+          Status: res.statusText
+        })
+       resolve(objectLink)
+    })
+    reject(err)
+  })
+}
+
+fetchLink(readLinks)
   .then(res => {
-    //
-    console.log("Probando readLinks", res);
+    console.log("FETCHLINK");
   })
   .catch(err => {
     console.log(err);
-  });
-
-
-const fetchLink = (readLinks) => {
-  readLinks.forEach(element => {
-    fetch(element.href)
-      .then(res => {
-        console.log("* Url:", res.url);
-        console.log(" - Fail or true:", res.ok);
-        console.log(" - Cod:", res.status);
-        console.log(" - Status:", res.statusText);
-      })
-      .catch(err => {
-        console.log(err)
-      })
   })
-}
+
 
 const readDirectoryTerminal = (directorio) => {
   //Muestra los archivos que esten dentro del directorio que se pasa en "path"
@@ -91,12 +99,13 @@ const readDirectoryTerminal = (directorio) => {
     .ext('md')
     .find()
   // files.then(console.log)
-  files.then(res => {
-    res.forEach(element => {
-      console.log("Archivo:", element);
-      links(element);
-    });
-  })
+  files
+    .then(res => {
+      res.forEach(element => {
+        console.log("Archivo:", element);
+        links(element);
+      });
+    })
     .catch(err => {
       console.log(err)
     })
