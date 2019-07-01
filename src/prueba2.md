@@ -1,8 +1,6 @@
-Hola mundo
+**Archivo de prueba 2**
+[Leer un directorio](https://nodejs.org/api/fs.html#fs_fs_readdir_path_options_callback)
 
-[Acerca de Node.js - Documentación oficial]()
-[Node.js file system - Documentación oficial]()
-<!-- [Node.js http.get - Documentación oficial]()
-[Node.js - Wikipedia]()
-[What exactly is Node.js? - freeCodeCamp]()
-[¿Qué es Node.js y para qué sirve? - drauta.com]() -->
+[Leer un directorio](https://nodejs.org/api/fs.html#fs_fs_readdir_path_options_callback)
+
+[Leer un archivo](https://github.com/efyg/SCL009-md-links/blob/master/prueba.md)
