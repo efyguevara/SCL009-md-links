@@ -33,7 +33,6 @@ mdLinks = (path, options = {}) => {
             let links = [];
             const stats = {};
             return new Promise(async (resolve, reject) => {
-
                 fs.readFile(path, "utf8", async (err, data) => {
                     if (err) {
                         reject(err);

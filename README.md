@@ -1,6 +1,6 @@
 # mdLinks
 
-![Markdown](img/markdown.jpg)
+[Markdown](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQofCXi_HQnlOjFpIvUhiIsX-nWjiBSs5dkZ0WmuNhg75xUyrNb)
 
 ## Introducción
 
@@ -59,7 +59,6 @@ Para instalar el módulo mdLinks se debe ejecutar el siguiente comando en la ter
 ##### Retorna: ![mdLinks ./ (file) --validate --stats](img/fileStatsValidate.png)
 
 
-
 ## Instalación
 
 Para instalar el módulo mdLinks se debe ejecutar el siguiente comando en la terminal: 
@@ -71,8 +70,8 @@ Para instalar el módulo mdLinks se debe ejecutar el siguiente comando en la ter
 * Versión: 0.1.0
 
 
-## Compatibilidad y versiones utilizadas
-* node: v8.11.
+## Dependencias
+* node: v8.11.4
 * npm: v6.9.0
 * node-fetch: "^1.0.0"
 * filehound: "^1.17.0",
