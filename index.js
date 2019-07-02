@@ -18,5 +18,3 @@ mdLinks(path, options)
 .then(res => {
   console.log(res)
 });
-
-module.exports = process;
