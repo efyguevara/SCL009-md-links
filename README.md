@@ -1,6 +1,6 @@
 # mdLinks
 
-[Markdown](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQofCXi_HQnlOjFpIvUhiIsX-nWjiBSs5dkZ0WmuNhg75xUyrNb)
+![Markdown](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQofCXi_HQnlOjFpIvUhiIsX-nWjiBSs5dkZ0WmuNhg75xUyrNb)
 
 ## Introducción
 
@@ -58,13 +58,6 @@ Para instalar el módulo mdLinks se debe ejecutar el siguiente comando en la ter
 ```
 ##### Retorna: ![mdLinks ./ (file) --validate --stats](img/fileStatsValidate.png)
 
-
-## Instalación
-
-Para instalar el módulo mdLinks se debe ejecutar el siguiente comando en la terminal: 
-```js
-    npm install efyguevara/md-links
-```
 
 ## Versión
 * Versión: 0.1.0

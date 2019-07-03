@@ -17,5 +17,6 @@ const path = process.argv[2];
 
 mdLinks(path, options)
 .then(res => {
-  return res
+  console.log(res);
+  return res;
 });

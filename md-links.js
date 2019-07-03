@@ -15,7 +15,7 @@ mdLinks = (path, options = {}) => {
 
                 readLinks(path, options)
                     .then(res => {
-                        console.log(res);
+                        // console.log(res);
                         resolve(res);
                     })
                     .catch(err => {
@@ -59,7 +59,7 @@ const readLinks = (path, options) => {
                 })
                 status['Total'] = totalLinks;
                 status['Unique'] = uniqueLinks.length;
-        
+
                 //Muestra la cantidad de links rotos
                 if (options['validate']) {
                     await fetchLink(links).then(data => {
@@ -123,8 +123,7 @@ const readDirectory = (directorio, options) => {
                         return res;
                     })
                     .catch(err => {
-                        
-                        console.log("ERROR", err);
+                        // console.log("ERROR", err);
                         return err
                     });
             });

@@ -91,15 +91,15 @@ test('Entrega un array de objetos que contienen el href, Text, File y Stats de c
 test(`Entrega un objeto con la camtidad de links que posee el directorio y cuantos de ellos son unicos`, () => {
   expect.assertions(1);
   return mdLinks('./src', { stats: true }).then(data => {
-    expect(data).toEqual( { Total: 3, Unique: 2 });
-  }); 
+    expect(data).toEqual({ Total: 3, Unique: 2 });
+  });
 });
 
 
 test(`Entrega un objeto con la camtidad de links que posee el directorio y cuantos de ellos son unicos`, () => {
   expect.assertions(1);
   return mdLinks('./src', { validate: true, stats: true }).then(data => {
-    expect(data).toEqual( { Total: 3, Unique: 2, Broken: 1 });
+    expect(data).toEqual({ Total: 3, Unique: 2, Broken: 1 });
   });
 });
 
