@@ -17,46 +17,72 @@ Para instalar el módulo mdLinks se debe ejecutar el siguiente comando en la ter
 ### Uso
 
 #### Comandos
+
+####Leer un directorio
 ```js
     mdLinks directory
 ```
-##### Retorna: ![mdLinks ./ (directorio)](img/directory.png)
+##### Retorna: 
+![mdLinks ./ (directorio)](img/directory.png)
+
+<br>
+
 
 ```js
     mdLinks directory --validate
 ```
-##### Retorna: ![mdLinks ./ --validate](img/directoryValidate.png)
+##### Retorna: 
+![mdLinks ./ --validate](img/directoryValidate.png)
+
+<br>
 
 ```js
     mdLinks directory --stats
 ```
-##### Retorna: ![mdLinks ./ --stats](img/directoryStats.png)
+##### Retorna: 
+![mdLinks ./ --stats](img/directoryStats.png)
+
+<br>
 
 
 ```js
     mdLinks directory --validate --stats
 ```
-##### Retorna: ![mdLinks ./ --validate --stats](img/directoryStatsValidate.png)
+##### Retorna: 
+![mdLinks ./ --validate --stats](img/directoryStatsValidate.png)
 
+<br>
+
+####Leer un Archivo
 ```js
     mdLinks file
 ```
-##### Retorna: ![mdLinks ./ (file)](img/file.png)
+##### Retorna: 
+![mdLinks ./ (file)](img/file.png)
+
+<br>
 
 ```js
     mdLinks file--validate
 ```
-##### Retorna: ![mdLinks ./ (file) --validate](img/fileValidate.png)
+##### Retorna: 
+![mdLinks ./ (file) --validate](img/fileValidate.png)
+
+<br>
 
 ```js
     mdLinks file --stats
 ```
-##### Retorna: ![mdLinks ./ (file) --stats](img/fileStats.png)
+##### Retorna: 
+![mdLinks ./ (file) --stats](img/fileStats.png)
+
+<br>
 
 ```js
     mdLinks file --validate --stats
 ```
-##### Retorna: ![mdLinks ./ (file) --validate --stats](img/fileStatsValidate.png)
+##### Retorna: 
+![mdLinks ./ (file) --validate --stats](img/fileStatsValidate.png)
 
 
 ## Versión
