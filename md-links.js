@@ -9,21 +9,21 @@ mdLinks = (path, options = {}) => {
     return new Promise((resolve, reject) => {
         fs.stat(path, (error, stats) => {
             if (error) {
-                console.log(error);
+                console.log("ERROR", error);
             }
             if (stats.isFile()) {
 
                 readLinks(path, options)
                     .then(res => {
+                        console.log(res);
                         resolve(res);
                     })
                     .catch(err => {
                         reject(err)
-                        console.log(err);
+                        console.log("ERROR", err);
                     });
             }
             if (stats.isDirectory()) {
-                console.log(options);
                 resolve(readDirectory(path, options));
             }
         });
@@ -87,7 +87,10 @@ const fetchLink = (readLinks) => {
                     Status: res.statusText
                 }
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log("ERROR", err)
+                return err;
+            });
     })
     return Promise.all(fetchArr)
         .then(values => {
@@ -95,7 +98,10 @@ const fetchLink = (readLinks) => {
                 element['stats'] = values[index]
             });
             return readLinks;
-        }).catch(console.log);;
+        }).catch(err => {
+            console.log("ERROR", err);
+            return err;
+        });;
 }
 
 //Lee los directorios, accede a cada archivo .md se encuentre y entrega la informaciòn de los links
@@ -114,9 +120,12 @@ const readDirectory = (directorio, options) => {
                     .then(res => {
                         console.log("Archivo:", element);
                         console.log(res);
+                        return res;
                     })
                     .catch(err => {
-                        console.log(err);
+                        
+                        console.log("ERROR", err);
+                        return err
                     });
             });
         })

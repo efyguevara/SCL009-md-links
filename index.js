@@ -5,6 +5,7 @@ const process = require('process');
 const options = {};
 
 process.argv.forEach((val, index) => {
+  
   if (val.includes('-stats' || '--stats')) {
     options['stats'] = true;
   }
@@ -16,5 +17,5 @@ const path = process.argv[2];
 
 mdLinks(path, options)
 .then(res => {
-  console.log(res)
+  return res
 });
