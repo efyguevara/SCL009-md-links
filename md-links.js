@@ -9,17 +9,18 @@ mdLinks = (path, options = {}) => {
     return new Promise((resolve, reject) => {
         fs.stat(path, (error, stats) => {
             if (error) {
+                reject(error);
                 console.log("ERROR", error);
             }
             if (stats.isFile()) {
 
                 readLinks(path, options)
                     .then(res => {
-                        // console.log(res);
                         resolve(res);
+                        // console.log(res);
                     })
                     .catch(err => {
-                        reject(err)
+                        reject(err);
                         console.log("ERROR", err);
                     });
             }
@@ -107,27 +108,31 @@ const fetchLink = (readLinks) => {
 //Lee los directorios, accede a cada archivo .md se encuentre y entrega la informaciòn de los links
 const readDirectory = (directorio, options) => {
     //Muestra los archivos que esten dentro del directorio que se pasa en "path"
+    return new Promise(async (resolve, reject) => {
     const files = FileHound.create()
         .discard('node_modules')
         .paths(directorio)
         .ext('md')
         .find()
 
-    files
+    await files
         .then(res => {
             res.forEach(element => {
                 readLinks(element, options)
                     .then(res => {
-                        console.log("Archivo:", element);
-                        console.log(res);
-                        return res;
+                        // console.log("Archivo:", element);
+                        // console.log(res);
+                        // return res;
+                        resolve(res)
                     })
                     .catch(err => {
                         // console.log("ERROR", err);
-                        return err
+                        // return err
+                        reject(err)
                     });
             });
         })
+    })
 }
 
 
