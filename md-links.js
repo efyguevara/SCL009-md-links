@@ -8,6 +8,10 @@ mdLinks = (path, options = {}) => {
     //Determina si es un file o un directory
     return new Promise((resolve, reject) => {
         fs.stat(path, (error, stats) => {
+            // if (!path.includes("md")){
+            //     await reject(error)
+            //     console.log("Por favor ingrese una extensión válida")
+            // }
             if (error) {
                 reject(error);
                 console.log("ERROR", error);
@@ -25,7 +29,7 @@ mdLinks = (path, options = {}) => {
                     });
             }
             if (stats.isDirectory()) {
-                resolve(readDirectory(path, options));
+                    resolve(readDirectory(path, options));
             }
         });
     })
@@ -109,31 +113,31 @@ const fetchLink = (readLinks) => {
 const readDirectory = (directorio, options) => {
     //Muestra los archivos que esten dentro del directorio que se pasa en "path"
     return new Promise(async (resolve, reject) => {
-    const files = FileHound.create()
-        .discard('node_modules')
-        .paths(directorio)
-        .ext('md')
-        .find()
+        const files = FileHound.create()
+            .discard('node_modules')
+            .paths(directorio)
+            .ext('md')
+            .find() 
 
-    await files
-        .then(res => {
-            res.forEach(element => {
-                readLinks(element, options)
-                    .then(res => {
-                        // console.log("Archivo:", element);
-                        // console.log(res);
-                        // return res;
-                        resolve(res)
-                    })
-                    .catch(err => {
-                        // console.log("ERROR", err);
-                        // return err
-                        reject(err)
-                    });
-            });
+            await files
+            .then(res => {
+                res.forEach(element => {
+                    readLinks(element, options)
+                        .then(res => {
+                            // console.log("Archivo:", element);
+                            // console.log(res);
+                            // return res;
+                            resolve(res)
+                        })
+                        .catch(err => {
+                            // console.log("ERROR", err);
+                            // return err
+                            reject(err)
+                        });
+                });
+            })
         })
-    })
-}
+    }
 
 
 module.exports = mdLinks; 
