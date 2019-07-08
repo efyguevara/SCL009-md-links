@@ -91,7 +91,6 @@ Para instalar el módulo sg-md-links se debe ejecutar el siguiente comando en la
 ##### Retorna: 
 ![md-links ./ --validate --stats](https://github.com/efyguevara/SCL009-md-links/raw/dv/img/directoryValidateStats.png)
 
-<br>
 
 ### Versión
 * Versión: 1.0.1
