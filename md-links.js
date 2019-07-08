@@ -8,51 +8,44 @@ mdLinks = (path, options = {}) => {
     //Determina si es un file o un directory
     return new Promise((resolve, reject) => {
         fs.stat(path, (error, stats) => {
-            // if (!path.includes("md")){
-            //     await reject(error)
-            //     console.log("Por favor ingrese una extensión válida")
-            // }
             if (error) {
-                reject(error);
-                console.log("ERROR", error);
+                return reject(error.message);
             }
             if (stats.isFile()) {
-
                 readLinks(path, options)
                     .then(res => {
                         resolve(res);
-                        // console.log(res);
                     })
                     .catch(err => {
                         reject(err);
-                        console.log("ERROR", err);
                     });
             }
             if (stats.isDirectory()) {
-                    resolve(readDirectory(path, options));
+                resolve(readDirectory(path, options));
             }
         });
     })
 }
+
 //lee los archivos y entrega información
 const readLinks = (path, options) => {
     let links = [];
     const status = {};
     return new Promise((resolve, reject) => {
         fs.readFile(path, "utf8", async (err, data) => {
-            if (err) {
-                reject(err);
+            if (!path.includes("md")) {
+                reject("Por favor ingrese una extensión válida");
             } else {
                 const renderer = new marked.Renderer();
                 renderer.link = (href, title, text) => {
-                    const base = {
+                    const arrayBase = {
                         href: href,
                         text: text,
                         file: path
                     };
-                    links.push(base);
+                    links.push(arrayBase);
                 }
-                marked(data, { renderer: renderer })
+                marked(data, { renderer: renderer });
             }
             if (options['stats']) {
                 let totalLinks = links.length;
@@ -82,8 +75,9 @@ const readLinks = (path, options) => {
     })
 }
 
+// Lee los links de cada archivo .md y guarda la información en el object fetchArr
 const fetchLink = (readLinks) => {
-    fetchArr = readLinks.map(element => {
+    let fetchArr = readLinks.map(element => {
         return fetch(element.href)
             .then((res) => {
                 return {
@@ -106,38 +100,41 @@ const fetchLink = (readLinks) => {
         }).catch(err => {
             console.log("ERROR", err);
             return err;
-        });;
+        });
 }
 
 //Lee los directorios, accede a cada archivo .md se encuentre y entrega la informaciòn de los links
 const readDirectory = (directorio, options) => {
     //Muestra los archivos que esten dentro del directorio que se pasa en "path"
     return new Promise(async (resolve, reject) => {
-        const files = FileHound.create()
+        let arrForSaveFiles = [];
+        const folder = FileHound.create()
             .discard('node_modules')
             .paths(directorio)
             .ext('md')
-            .find() 
+            .find()
 
-            await files
-            .then(res => {
-                res.forEach(element => {
-                    readLinks(element, options)
-                        .then(res => {
-                            // console.log("Archivo:", element);
-                            // console.log(res);
-                            // return res;
-                            resolve(res)
-                        })
-                        .catch(err => {
-                            // console.log("ERROR", err);
-                            // return err
-                            reject(err)
-                        });
+        await folder
+            .then(files => {
+                files.forEach(element => {
+                    arrForSaveFiles.push(readLinks(element, options));
                 });
-            })
-        })
-    }
 
+                return Promise.all(arrForSaveFiles)
+                    .then(res => {
+                        let arrResponse = [];
+                        files.forEach((element, index) => {
+                            let readLinksObject = {}
+                            readLinksObject[element] = res[index];
+                            arrResponse.push(readLinksObject)
+                        })
+                        resolve(arrResponse);
+                    })
+                    .catch(error => {
+                        return reject(new Error(error.message));
+                    });
+            })
+    })
+}
 
 module.exports = mdLinks; 
