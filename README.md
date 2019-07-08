@@ -110,6 +110,7 @@ Para un uso óptimo se recomienda utilizar las siguientes versiones:
 * node: v8.11.4
 * npm: v6.9.0
 <hr>
+
 ### Desarrollado por:
 
 Stefany E. Guevara B.
