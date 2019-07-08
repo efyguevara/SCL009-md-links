@@ -5,14 +5,14 @@
 ## Introducción
 
 
-sg-md-links es un paquete analizador de url's que puede acceder a diferentes rutas especificadas por el usuario, y puede leer el contenido tanto de archivos como de directorios para entregar la información que contiene cada uno (links). 
+sg-md-links es un paquete analizador de url's que puede acceder a diferentes rutas especificadas por el usuario, y puede leer el contenido tanto de archivos como de directorios para entregar información de cada uno de los links encontrados. 
 
 
-### Instalación
+### Instalación  
 
 Para instalar el módulo sg-md-links se debe ejecutar el siguiente comando en la terminal: 
 ```js
-    npm install mdLinks
+    npm install sg-md-links
 ```
 
 ### Diagrama de flujo:
@@ -28,7 +28,7 @@ Para instalar el módulo sg-md-links se debe ejecutar el siguiente comando en la
 
 #### Leer un Archivo
 ```js
-    md-links file
+    md-links [file]
 ```
 ##### Retorna: 
 ![md-links ./ (file)](https://github.com/efyguevara/SCL009-md-links/raw/dv/img/file.png)
@@ -36,7 +36,7 @@ Para instalar el módulo sg-md-links se debe ejecutar el siguiente comando en la
 <hr>
 
 ```js
-    md-links file--validate
+    md-links [file] --validate
 ```
 ##### Retorna: 
 ![md-links ./ (file) --validate](https://github.com/efyguevara/SCL009-md-links/raw/dv/img/fileValidate.png)
@@ -44,7 +44,7 @@ Para instalar el módulo sg-md-links se debe ejecutar el siguiente comando en la
 <hr>
 
 ```js
-    md-links file --stats
+    md-links [file] --stats
 ```
 ##### Retorna: 
 ![md-links ./ (file) --stats](https://github.com/efyguevara/SCL009-md-links/raw/dv/img/fileStats.png)
@@ -52,7 +52,7 @@ Para instalar el módulo sg-md-links se debe ejecutar el siguiente comando en la
 <hr>
 
 ```js
-    md-links file --validate --stats
+    md-links [file] --validate --stats
 ```
 
 ##### Retorna: 
@@ -62,7 +62,7 @@ Para instalar el módulo sg-md-links se debe ejecutar el siguiente comando en la
 
 #### Leer un directorio
 ```js
-    md-links directory
+    md-links [directory]
 ```
 ##### Retorna: 
 ![md-links ./ (directorio)](https://github.com/efyguevara/SCL009-md-links/raw/dv/img/directory.png)
@@ -70,7 +70,7 @@ Para instalar el módulo sg-md-links se debe ejecutar el siguiente comando en la
 <hr>
 
 ```js
-    md-links directory --validate
+    md-links [directory] --validate
 ```
 ##### Retorna: 
 ![md-links ./ --validate](https://github.com/efyguevara/SCL009-md-links/raw/dv/img/directoryValidate.png)
@@ -78,7 +78,7 @@ Para instalar el módulo sg-md-links se debe ejecutar el siguiente comando en la
 <hr>
 
 ```js
-    md-links directory --stats
+    md-links [directory] --stats
 ```
 ##### Retorna: 
 ![md-links ./ --stats](https://github.com/efyguevara/SCL009-md-links/raw/dv/img/directoryStats.png)
@@ -86,18 +86,18 @@ Para instalar el módulo sg-md-links se debe ejecutar el siguiente comando en la
 <hr>
 
 ```js
-    md-links directory --validate --stats
+    md-links [directory] --validate --stats
 ```
 ##### Retorna: 
 ![md-links ./ --validate --stats](https://github.com/efyguevara/SCL009-md-links/raw/dv/img/directoryValidateStats.png)
 
 <br>
 
-## Versión
+### Versión
 * Versión: 1.0.1
 
 
-## Dependencias
+### Dependencias
 * eslint: "^6.0.1",
 * eslint-plugin-jest: "^22.7.1",
 * filehound: "^1.17.0",
@@ -109,3 +109,7 @@ Para instalar el módulo sg-md-links se debe ejecutar el siguiente comando en la
 Para un uso óptimo se recomienda utilizar las siguientes versiones:
 * node: v8.11.4
 * npm: v6.9.0
+<hr>
+### Desarrollado por:
+
+Stefany E. Guevara B.
