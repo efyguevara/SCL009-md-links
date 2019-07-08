@@ -1,7 +1,8 @@
 {
-  "name": "md-links",
-  "version": "0.1.0",
+  "name": "sg-md-links",
+  "version": "1.0.1",
   "dependencies": {
+    "eslint": "^6.0.1",
     "eslint-plugin-jest": "^22.7.1",
     "filehound": "^1.17.0",
     "jest": "^24.8.0",
@@ -15,7 +16,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
